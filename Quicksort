@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int v[100];
+
+int f(int li,int ls)
+{
+    int p,i=li,j=ls,a;
+    p=v[(li+ls)/2];
+    while(i<=j)
+    {
+        while(v[i]<p)
+            i++;
+        while(v[j]>p)
+            j--;
+
+        if(i<=j)
+        {
+            a=v[i];
+            v[i]=v[j];
+            v[j]=a;
+            i++;
+            j--;
+        }
+    }
+    if (li < j)
+        f(li, j);
+    if (i < ls)
+        f(i, ls);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+        cin>>v[i];
+    f(1,n);
+        for(int i=1;i<=n;i++)
+        cout<<v[i]<<" ";
+    return 0;
+}
