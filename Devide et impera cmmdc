@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+ 
+int cmmdc(int st, int dr, int x[])
+{
+    int m,m1,m2,r;
+    if(st==dr)
+        return x[st];
+    else
+    {
+        m=(st+dr)/2;
+        m1=cmmdc(st,m,x);
+        m2=cmmdc(m+1,dr,x);
+        r=m1%m2;
+        while(r)
+        {
+            m1=m2;
+            m2=r;
+            r=m1%m2;
+       }
+        return m2;
+    }
+}
+ 
+int main()
+{
+    int n, x[100],i;
+    cin>>n;
+    for(i=1; i<=n; i++)
+        cin>>x[i];
+    cout<<cmmdc(1,n,x);
+    return 0;
+}
