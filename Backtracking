@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int x1[10], n1,;
+int x1[10], n1;
 
 void Afisare()
 { int i;
